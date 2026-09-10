@@ -34,10 +34,10 @@ const MainLayout = ({ children }: MainLayoutProps) => {
         </main>
       </div>
 
-      {/* Mobile + tablet sidebar: below 1280px */}
+    
       {sidebarOpen && (
         <div className="fixed inset-0 z-[100] xl:hidden">
-          {/* Overlay */}
+        
           <button
             type="button"
             aria-label="Close sidebar"
@@ -45,7 +45,7 @@ const MainLayout = ({ children }: MainLayoutProps) => {
             className="absolute inset-0 h-full w-full bg-black/50 backdrop-blur-sm"
           />
 
-          {/* Drawer */}
+        
           <div className="relative z-10 h-full w-[280px] max-w-[85vw] animate-[slideIn_0.2s_ease-out]">
             <div className="relative h-full">
               <Sidebar onNavigate={closeSidebar} />
