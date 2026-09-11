@@ -101,6 +101,7 @@ const defaultTransactions: Transaction[] = [
 
 export const TransactionProvider = ({ children }: TransactionProviderProps) => {
   const [transactions, setTransactions] = useState<Transaction[]>(() => {
+    // store the transaction data
     const savedData = localStorage.getItem(STORAGE_KEY);
 
     /*
@@ -133,6 +134,7 @@ export const TransactionProvider = ({ children }: TransactionProviderProps) => {
   }, [transactions]);
 
   const addTransaction = (transaction: Omit<Transaction, "id">) => {
+    // add new transaction
     const newTransaction: Transaction = {
       ...transaction,
       id: crypto.randomUUID(),
@@ -142,6 +144,7 @@ export const TransactionProvider = ({ children }: TransactionProviderProps) => {
   };
 
   const updateTransaction = (
+    //Existing transaction update
     id: string,
     transaction: Omit<Transaction, "id">,
   ) => {
@@ -162,7 +165,7 @@ export const TransactionProvider = ({ children }: TransactionProviderProps) => {
   };
 
   const totalIncome = transactions
-    .filter((transaction) => transaction.type === "income")
+    .filter((transaction) => transaction.type === "income") // only income transaction
     .reduce((total, transaction) => total + transaction.amount, 0);
 
   const totalExpense = transactions

@@ -5,22 +5,31 @@ import MainLayout from "./components/Layout/MainLayout";
 import Dashboard from "./pages/Dashboard";
 import Transactions from "./pages/Transactions";
 import Login from "./pages/Login";
+import SignIn from "./pages/SignIn";
 
 import { useAuth } from "./context/AuthContext";
 
 const App = () => {
-  const { user, login } = useAuth();
+  const { user } = useAuth();
+
+  const hasRegisteredAccount = Boolean(localStorage.getItem("expense-users"));
 
   return (
     <BrowserRouter>
       <Routes>
+        {/* Sign In */}
         <Route
-          path="/login"
-          element={
-            user ? <Navigate to="/" replace /> : <Login onLogin={login} />
-          }
+          path="/signin"
+          element={user ? <Navigate to="/" replace /> : <SignIn />}
         />
 
+        {/* Login */}
+        <Route
+          path="/login"
+          element={user ? <Navigate to="/" replace /> : <Login />}
+        />
+
+        {/* Dashboard */}
         <Route
           path="/"
           element={
@@ -29,11 +38,15 @@ const App = () => {
                 <Dashboard />
               </MainLayout>
             ) : (
-              <Navigate to="/login" replace />
+              <Navigate
+                to={hasRegisteredAccount ? "/login" : "/signin"}
+                replace
+              />
             )
           }
         />
 
+        {/* Transactions */}
         <Route
           path="/transactions"
           element={
@@ -42,12 +55,24 @@ const App = () => {
                 <Transactions />
               </MainLayout>
             ) : (
-              <Navigate to="/login" replace />
+              <Navigate
+                to={hasRegisteredAccount ? "/login" : "/signin"}
+                replace
+              />
             )
           }
         />
 
-        <Route path="*" element={<Navigate to="/" replace />} />
+        {/* Unknown route */}
+        <Route
+          path="*"
+          element={
+            <Navigate
+              to={hasRegisteredAccount ? "/login" : "/signin"}
+              replace
+            />
+          }
+        />
       </Routes>
     </BrowserRouter>
   );

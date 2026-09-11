@@ -5,14 +5,11 @@ import { useTransactions } from "../../context/TransactionContext";
 const ExpenseCategoryChart = () => {
   const { transactions, totalExpense } = useTransactions();
 
-  /* ---------------------------------
-     EXPENSE CATEGORY DATA
-  ---------------------------------- */
-
   const expenseTransactions = transactions.filter(
     (transaction) => transaction.type === "expense",
   );
 
+  //stored the amount in category wise
   const categoryTotals: Record<string, number> = {};
 
   expenseTransactions.forEach((transaction) => {
@@ -25,14 +22,10 @@ const ExpenseCategoryChart = () => {
       category,
       amount,
     }))
-    .sort((a, b) => b.amount - a.amount);
+    .sort((a, b) => b.amount - a.amount); // desending order
 
   return (
     <div className="box-border w-full min-w-0 max-w-full overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm dark:border-gray-800 dark:bg-gray-900">
-      {/* =====================================
-          HEADER
-      ====================================== */}
-
       <div className="flex w-full min-w-0 items-center justify-between gap-2 border-b border-gray-200 px-3 py-3.5 sm:gap-3 sm:px-5 sm:py-4 dark:border-gray-800">
         <div className="flex min-w-0 flex-1 items-center gap-2.5 sm:gap-3">
           <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl sm:h-10 sm:w-10 bg-red-50 text-red-600 dark:bg-red-500/10 dark:text-red-400">
@@ -43,10 +36,6 @@ const ExpenseCategoryChart = () => {
             <h2 className="truncate text-sm font-semibold leading-5 text-gray-900 sm:text-base dark:text-white">
               Expense by Category
             </h2>
-
-            <p className="mt-0.5 truncate text-xs text-gray-500 dark:text-gray-400">
-              Where your money is going
-            </p>
           </div>
         </div>
 
@@ -60,10 +49,6 @@ const ExpenseCategoryChart = () => {
           </p>
         </div>
       </div>
-
-      {/* =====================================
-          CONTENT
-      ====================================== */}
 
       <div className="box-border w-full min-w-0 p-3 sm:p-5">
         {categoryData.length === 0 ? (

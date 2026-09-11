@@ -12,9 +12,7 @@ const Header = ({ onMenuClick }: HeaderProps) => {
 
   return (
     <header className="sticky top-0 z-30 flex h-16 w-full min-w-0 items-center justify-between border-b border-gray-200 bg-white/95 px-3 backdrop-blur sm:h-20 sm:px-5 md:px-6 lg:px-8 dark:border-gray-800 dark:bg-gray-900/95">
-      {/* Left Section */}
       <div className="flex min-w-0 items-center gap-3">
-        {/* Mobile Menu */}
         <button
           type="button"
           onClick={onMenuClick}
@@ -24,7 +22,6 @@ const Header = ({ onMenuClick }: HeaderProps) => {
           <Menu size={20} />
         </button>
 
-        {/* Desktop Logo + Company */}
         <div className="hidden min-w-0 items-center gap-3 xl:flex">
           <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-indigo-600 text-white">
             <WalletCards size={20} />
@@ -42,16 +39,13 @@ const Header = ({ onMenuClick }: HeaderProps) => {
         </div>
       </div>
 
-      {/* Mobile Company Name */}
       <div className="absolute left-1/2 min-w-0 max-w-[45%] -translate-x-1/2 xl:hidden">
         <h2 className="truncate text-sm font-bold text-gray-900 sm:text-base dark:text-white">
           {user?.companyName || "Expense Tracker"}
         </h2>
       </div>
 
-      {/* Right Section */}
       <div className="flex shrink-0 items-center gap-3">
-        {/* User Details */}
         <div className="hidden items-center gap-2 sm:flex">
           <div className="flex h-9 w-9 items-center justify-center rounded-full bg-indigo-100 text-indigo-600 dark:bg-indigo-500/10 dark:text-indigo-400">
             <User size={18} />
@@ -68,7 +62,6 @@ const Header = ({ onMenuClick }: HeaderProps) => {
           </div>
         </div>
 
-        {/* Theme Toggle */}
         <div className="shrink-0">
           <ThemeToggle />
         </div>

@@ -25,6 +25,7 @@ const Dashboard = () => {
 
   const formatAmount = (amount: number) => {
     return new Intl.NumberFormat("en-IN", {
+      // convert indian format ex:5000 resu:50,000.00
       style: "currency",
       currency: "INR",
       maximumFractionDigits: 2,
@@ -37,7 +38,8 @@ const Dashboard = () => {
     }
 
     return new Date(`${date}T00:00:00`).toLocaleDateString("en-IN", {
-      day: "2-digit",
+      // chage the date  format
+      day: "2-digit", //// date format ex:2026-09-11 result:11 sep 2026
       month: "short",
       year: "numeric",
     });
@@ -50,10 +52,10 @@ const Dashboard = () => {
   const currentYear = new Date().getFullYear();
 
   const thisMonthTransactions = transactions.filter((transaction) => {
-    const transactionDate = new Date(`${transaction.date}T00:00:00`);
+    const transactionDate = new Date(`${transaction.date}T00:00:00`); //Date object
 
     return (
-      transactionDate.getMonth() === currentMonth &&
+      transactionDate.getMonth() === currentMonth && // check transaction month and current month
       transactionDate.getFullYear() === currentYear
     );
   });
@@ -68,7 +70,6 @@ const Dashboard = () => {
 
   return (
     <div className="box-border w-full min-w-0 max-w-full space-y-4 overflow-x-hidden sm:space-y-6">
-      {/* Welcome */}
       <div className="flex w-full min-w-0 flex-col gap-3 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
         <div className="min-w-0 flex-1">
           <p className="text-xs font-medium leading-5 text-indigo-600 sm:text-sm dark:text-indigo-400">
@@ -76,12 +77,8 @@ const Dashboard = () => {
           </p>
 
           <h1 className="mt-1 text-xl font-bold text-gray-900 sm:text-2xl md:text-3xl dark:text-white">
-            Welcome back 👋
+            Welcome back
           </h1>
-
-          <p className="mt-1 max-w-full text-xs leading-5 text-gray-500 sm:text-sm dark:text-gray-400">
-            Here's what's happening with your finances.
-          </p>
         </div>
 
         <button
@@ -93,8 +90,6 @@ const Dashboard = () => {
           Add Transaction
         </button>
       </div>
-
-      {/* Summary Cards */}
       <div className="grid w-full min-w-0 grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 xl:grid-cols-3">
         {/* Balance */}
         <div className="box-border w-full min-w-0 rounded-2xl border border-gray-200 bg-white p-3.5 sm:p-5 dark:border-gray-800 dark:bg-gray-900">

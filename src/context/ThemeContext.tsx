@@ -1,6 +1,6 @@
 import {
-  createContext,
-  useContext,
+  createContext, // share to theme data
+  useContext, //use to  read & access
   useEffect,
   useState,
   type ReactNode,

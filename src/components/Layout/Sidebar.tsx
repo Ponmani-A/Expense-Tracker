@@ -32,7 +32,6 @@ const Sidebar = ({ onNavigate }: SidebarProps) => {
 
   return (
     <aside className="flex h-full w-full flex-col border-r border-gray-200 bg-white dark:border-gray-800 dark:bg-gray-900">
-      {/* Logo / Company */}
       <div className="flex h-20 shrink-0 items-center gap-3 border-b border-gray-200 px-5 dark:border-gray-800">
         <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-indigo-600 text-white shadow-sm">
           <WalletCards size={22} />
@@ -48,7 +47,6 @@ const Sidebar = ({ onNavigate }: SidebarProps) => {
           </p>
         </div>
 
-        {/* Mobile close button */}
         <button
           type="button"
           onClick={onNavigate}
@@ -70,7 +68,6 @@ const Sidebar = ({ onNavigate }: SidebarProps) => {
         </p>
       </div>
 
-      {/* Navigation */}
       <nav className="flex-1 space-y-1 px-4 py-5">
         <p className="mb-3 px-3 text-[11px] font-semibold uppercase tracking-wider text-gray-400">
           Menu
@@ -100,9 +97,7 @@ const Sidebar = ({ onNavigate }: SidebarProps) => {
         })}
       </nav>
 
-      {/* Bottom Section */}
       <div className="border-t border-gray-200 p-4 dark:border-gray-800">
-        {/* Logout */}
         <button
           type="button"
           onClick={handleLogout}
